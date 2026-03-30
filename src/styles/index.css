@@ -1,0 +1,29 @@
+@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';
+
+.card-shadow {
+    box-shadow: 0 0 1px 0px gray;
+}
+
+h1,
+h3,
+footer h4 {
+    color: #FF5722;
+}
+
+.logo {
+    border-bottom: 7px solid #8BC34A;
+    border-right: 7px solid #8BC34A;
+}
+
+/* Mobile responsive utilities */
+@media (max-width: 640px) {
+    p {
+        font-size: 12px;
+    }
+
+    footer a {
+        font-size: 12px;
+    }
+}
