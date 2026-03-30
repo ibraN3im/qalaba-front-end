@@ -49,11 +49,11 @@ export function Header() {
               <div className="md:w-12 md:h-12 w-8 h-8 logo rounded-full flex items-center justify-center">
                 {/* <img src="./src/logo/galaba-logo.png" alt="Galaba Logo" className="w-full h-full object-cover" /> */}
               </div>
-              <div className="flex flex-col">
-                <span className="text-base md:text-2xl font-bold text-red-700">
+                            <div className="flex flex-col">
+                <span className="text-sm md:text-base md:text-2xl font-bold text-red-700">
                   {siteName[language]}
                 </span>
-                <span className="text-xs sm:text-sm md:text-base text-gray-500">
+                <span className="disc-lable sm:text-sm md:text-base text-gray-500">
                   {t("صحيفه إلكترونية", "Digit-Newspaper")}
                 </span>
               </div>
@@ -126,7 +126,7 @@ export function Header() {
                 }
                 className="md:hidden p-2 hover:bg-gray-100 rounded-full"
               >
-                <Menu className="w-4 h-4 " />
+                <Menu className="w-5 h-5 " />
               </button>
             </div>
           </div>
