@@ -112,7 +112,7 @@ export function Header() {
             <div className="flex items-center gap-2 text-red-700">
               <button
                 onClick={toggleLanguage}
-                className="flex items-center md:gap-4 gap-2 md:px-2 py-2 rounded-full hover:bg-gray-100 transition-colors"
+                className="flex items-center md:gap-1 gap-0.5 md:px-2 py-2 rounded-full hover:bg-gray-100 transition-colors"
               >
                 <Globe className="md:w-5 md:h-5 w-3 h-3 " />
                 <span className="text-xs md:text-base font-medium">
