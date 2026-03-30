@@ -13,8 +13,10 @@ footer h4 {
 }
 
 .logo {
-    border-bottom: 7px solid #8BC34A;
+    border-bottom: 10px solid #8BC34A;
     border-right: 7px solid #8BC34A;
+        border-right: 7px solid #8BC34A;
+
 }
 
 /* Mobile responsive utilities */
@@ -24,7 +26,7 @@ footer h4 {
     }
     .disc-lable {
         font-size: 8px;
-        letter-spacing: 0.5px;
+        letter-spacing: -0.5px;
     }
     footer a {
         font-size: 12px;
