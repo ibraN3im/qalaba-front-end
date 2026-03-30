@@ -49,12 +49,12 @@ export function BreakingNewsTicker() {
   return (
     <div className="bg-red-600 text-white overflow-hidden">
       <div className="container mx-auto px-4 h-10 flex items-center">
-        <div className="flex items-center gap-2 bg-red-800 px-4 py-1 rounded font-bold whitespace-nowrap text-sm md:text-base">
+               <div className="flex items-center gap-2 bg-red-800 px-1 md:px-4 py-1 rounded font-bold whitespace-nowrap text-sm md:text-base">
           <AlertCircle className="w-4 h-4" />
           <span>{t("عاجل", "BREAKING")}</span>
         </div>
-        <div className="flex-1 overflow-hidden mx-4">
-          <div className="animate-ticker flex gap-8 md:gap-12">
+        <div className="flex-1 overflow-hidden mx-2">
+          <div className="animate-ticker flex gap-6 md:gap-8">
             {breakingNews.map((article) => (
               <Link
                 key={article._id}
