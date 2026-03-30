@@ -22,7 +22,10 @@ footer h4 {
     p {
         font-size: 12px;
     }
-
+    .disc-lable {
+        font-size: 8px;
+        letter-spacing: 0.5px;
+    }
     footer a {
         font-size: 12px;
     }
