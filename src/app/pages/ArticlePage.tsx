@@ -22,12 +22,12 @@ export function ArticlePage() {
 
   // Update meta tags when article is loaded
   useMetaTags(article ? {
-    title: `${article.title[language]} - ${language === 'ar' ? 'صحيفة الغلابه' : 'Al-Ghalaba News'}`,
+    title: `${article.title[language]} - ${language === 'ar' ? 'صحيفة الغلابه' : 'Ghalaba News'}`,
     description: article.summary[language],
-    image: article.featuredImage,
+    image: article.featuredImage.startsWith('http') ? article.featuredImage : `${window.location.origin}${article.featuredImage}`,
     url: `${window.location.origin}/article/${article.slug}`,
     type: 'article',
-    siteName: language === 'ar' ? 'صحيفة الغلابه' : 'Al-Ghalaba News',
+    siteName: language === 'ar' ? 'صحيفة الغلابه' : 'Ghalaba News',
     locale: language === 'ar' ? 'ar_AR' : 'en_US',
     author: article.author.name,
     publishedTime: article.publishedAt,
@@ -38,7 +38,7 @@ export function ArticlePage() {
       '@type': 'NewsArticle',
       headline: article.title[language],
       description: article.summary[language],
-      image: [article.featuredImage],
+      image: [article.featuredImage.startsWith('http') ? article.featuredImage : `${window.location.origin}${article.featuredImage}`],
       datePublished: article.publishedAt,
       dateModified: article.updatedAt || article.publishedAt,
       author: {
@@ -47,7 +47,7 @@ export function ArticlePage() {
       },
       publisher: {
         '@type': 'Organization',
-        name: language === 'ar' ? 'صحيفة الغلابه' : 'Al-Ghalaba News',
+        name: language === 'ar' ? 'صحيفة الغلابه' : 'Ghalaba News',
         logo: {
           '@type': 'ImageObject',
           url: `${window.location.origin}/logo.png`
@@ -92,7 +92,7 @@ export function ArticlePage() {
         <h1 className="text-sm md:text-xl font-bold mb-4">
           {t("المقال غير موجود", "Article Not Found")}
         </h1>
-        <Link to="/" className="text-red-600 hover:underline">
+        <Link to="/" className="text-sm md:text-base text-red-600 hover:underline">
           {t("العودة للرئيسية", "Back to Home")}
         </Link>
       </div>
@@ -103,13 +103,13 @@ export function ArticlePage() {
     const url = window.location.href;
     const title = article.title[language];
     const description = article.summary[language];
-    const siteName = language === 'ar' ? 'صحيفة الغلابه' : 'Al-Ghalaba News';
+    const siteName = language === 'ar' ? 'صحيفة الغلابه' : 'Ghalaba News';
+    const imageUrl = article.featuredImage.startsWith('http') ? article.featuredImage : `${window.location.origin}${article.featuredImage}`;
 
     // Create enhanced share text with emojis and better formatting
-    const shareText = `📰 ${siteName}\n\n📌 ${title}\n\n${description}\n\n🔗 ${url}`;
-
+      const shareText = `📰 ${siteName}\n\n🔔 ${title}\n\n✍️ ${description}\n\n🔗 ${url}`;
     const urls: { [key: string]: string } = {
-      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(`${title} - ${siteName}`)}`,
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(`${title}\n\n${description}\n\n${siteName}`)}`,
       twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(`${title} - ${siteName}`)}&via=AlGhalabaNews`,
       whatsapp: `https://wa.me/?text=${encodeURIComponent(shareText)}`,
     };
@@ -299,12 +299,7 @@ export function ArticlePage() {
                 {t("اشترك الآن", "Subscribe Now")}
               </button>
             </div>
-
-
-
           </aside>
-
-
         </div>
       </div>
     </div>
