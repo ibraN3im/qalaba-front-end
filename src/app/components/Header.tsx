@@ -7,7 +7,7 @@ export function Header() {
   const { language, toggleLanguage, t, dir } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [siteName, setSiteName] = useState({ ar: "الغلابه", en: "Al-Ghalaba" });
+  const [siteName, setSiteName] = useState({ ar: "الغلابه", en: "Ghalaba" });
 
   useEffect(() => {
     loadSettings();
