@@ -13,10 +13,9 @@ footer h4 {
 }
 
 .logo {
-    border-bottom: 10px solid #8BC34A;
-    border-right: 7px solid #8BC34A;
-        border-right: 7px solid #8BC34A;
-
+border-bottom: 7px solid #8bc34a;
+    border-left: 4px solid #8bc34a;
+    border-right: 4px solid #8bc34a;
 }
 
 /* Mobile responsive utilities */
