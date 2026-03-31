@@ -107,7 +107,7 @@ export function ArticlePage() {
     const imageUrl = article.featuredImage.startsWith('http') ? article.featuredImage : `${window.location.origin}${article.featuredImage}`;
 
     // Create enhanced share text with emojis and better formatting
-      const shareText = `📰 ${siteName}\n\n🔔 ${title}\n\n✍️ ${description}\n\n🔗 ${url}`;
+      const shareText = `📰 ${siteName} 📰\n\n🔔🔔 ${title} 🔔🔔\n\n✍️ ${description}\n\n🔗 ${url}`;
     const urls: { [key: string]: string } = {
       facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(`${title}\n\n${description}\n\n${siteName}`)}`,
       twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(`${title} - ${siteName}`)}&via=AlGhalabaNews`,
