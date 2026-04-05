@@ -139,7 +139,7 @@ export function ArticlePage() {
           <span className="text-gray-900">{t("المقال", "Article")}</span>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 md:gap-4 card-shadow">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 md:gap-4 card-shadow rounded-md">
           <article className="lg:col-span-2 bg-white rounded-lg shadow-lg overflow-hidden">
             {article.isBreaking && (
               <div className="bg-red-600 text-white px-6 py-2 font-bold">
