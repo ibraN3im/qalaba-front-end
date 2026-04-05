@@ -22,12 +22,12 @@ export function ArticlePage() {
 
   // Update meta tags when article is loaded
   useMetaTags(article ? {
-    title: `${article.title[language]} - ${language === 'ar' ? 'صحيفة الغلابه' : 'Ghalaba News'}`,
+    title: `${article.title[language]} - ${language === 'ar' ? 'صحيفة الغلابه' : 'Ghalaba Newspaper'}`,
     description: article.summary[language],
     image: article.featuredImage.startsWith('http') ? article.featuredImage : `${window.location.origin}${article.featuredImage}`,
     url: `${window.location.origin}/article/${article.slug}`,
     type: 'article',
-    siteName: language === 'ar' ? 'صحيفة الغلابه' : 'Ghalaba News',
+    siteName: language === 'ar' ? 'صحيفة الغلابه' : 'Ghalaba Newspaper',
     locale: language === 'ar' ? 'ar_AR' : 'en_US',
     author: article.author.name,
     publishedTime: article.publishedAt,
@@ -47,7 +47,7 @@ export function ArticlePage() {
       },
       publisher: {
         '@type': 'Organization',
-        name: language === 'ar' ? 'صحيفة الغلابه' : 'Ghalaba News',
+        name: language === 'ar' ? 'صحيفة الغلابه' : 'Ghalaba Newspaper',
         logo: {
           '@type': 'ImageObject',
           url: `${window.location.origin}/logo.png`
@@ -99,15 +99,34 @@ export function ArticlePage() {
     );
   }
 
+  const getYouTubeEmbedUrl = (url: string) => {
+    // Check if it's already an embed URL
+    if (url.includes('youtube.com/embed/')) {
+      return url;
+    }
+
+    // Extract video ID from various YouTube URL formats
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    const videoId = match && match[2].length === 11 ? match[2] : null;
+
+    if (videoId) {
+      return `https://www.youtube.com/embed/${videoId}`;
+    }
+
+    // If not a YouTube URL, return as is
+    return url;
+  };
+
   const handleShare = (platform: string) => {
     const url = window.location.href;
     const title = article.title[language];
     const description = article.summary[language];
-    const siteName = language === 'ar' ? 'صحيفة الغلابه' : 'Ghalaba News';
+    const siteName = language === 'ar' ? 'صحيفة الغلابه' : 'Ghalaba Newspaper';
     const imageUrl = article.featuredImage.startsWith('http') ? article.featuredImage : `${window.location.origin}${article.featuredImage}`;
 
     // Create enhanced share text with emojis and better formatting
-   const shareText = `📰 ${siteName}\n\n📌 ${title} 📌\n\n${description}\n\n🔗 ${url}`;
+    const shareText = `📰 ${siteName}\n\n📌 ${title} 📌\n\n${description}\n\n ${url}`;
 
     const urls: { [key: string]: string } = {
       facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(`${title}\n\n${description}\n\n${siteName}`)}`,
@@ -140,7 +159,7 @@ export function ArticlePage() {
           <span className="text-gray-900">{t("المقال", "Article")}</span>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 md:gap-4 card-shadow rounded-md">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 md:gap-4 rounded-md">
           <article className="lg:col-span-2 bg-white rounded-lg shadow-lg overflow-hidden">
             {article.isBreaking && (
               <div className="bg-red-600 text-white px-6 py-2 font-bold">
@@ -194,7 +213,7 @@ export function ArticlePage() {
                   </h3>
                   <div className="aspect-video">
                     <iframe
-                      src={article.videoUrl}
+                      src={getYouTubeEmbedUrl(article.videoUrl)}
                       className="w-full h-full rounded-lg"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
@@ -300,7 +319,12 @@ export function ArticlePage() {
                 {t("اشترك الآن", "Subscribe Now")}
               </button>
             </div>
+
+
+
           </aside>
+
+
         </div>
       </div>
     </div>
